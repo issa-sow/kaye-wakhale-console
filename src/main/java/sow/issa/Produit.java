@@ -1,34 +1,34 @@
 package sow.issa;
 
 public class Produit {
-    private long idProduit;
+    private static long idProduit;
     private String nomProduit;
     private double prix;
     private String marque;
     private String modele;
 
     public Produit() {
-        this.idProduit = 0;
+        Produit.idProduit++;
         this.nomProduit = null;
         this.prix = 0;
         this.marque = null;
         this.modele = null;
     }
 
-    public Produit(long idProduit, String nomProduit, double prix, String marque, String modele) {
-        this.idProduit = idProduit;
+    public Produit(String nomProduit, double prix, String marque, String modele) {
+        Produit.idProduit++;
         this.nomProduit = nomProduit;
         this.prix = prix;
         this.marque = marque;
         this.modele = modele;
     }
 
-    public long getIdProduit() {
-        return idProduit;
+    public static long getIdProduit() {
+        return Produit.idProduit;
     }
 
-    public void setIdProduit(long idProduit) {
-        this.idProduit = idProduit;
+    public static void setIdProduit() {
+        Produit.idProduit++;
     }
 
     public String getNomProduit() {
@@ -65,12 +65,12 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" +
-                "idProduit=" + idProduit +
-                ", nomProduit='" + nomProduit + '\'' +
-                ", prix=" + prix +
-                ", marque=" + marque +
-                ", modele='" + modele + '\'' +
-                '}';
+        return "\tProduit {\n" +
+                //"\t\tidProduit=" + idProduit + "'\n" +
+                "\t\tnomProduit='" + nomProduit + "'\n" +
+                "\t\tprix=" + prix + "'\n" +
+                "\t\tmarque=" + marque + "'\n" +
+                "\t\tmodele='" + modele + "'\n" +
+                "\t}";
     }
 }

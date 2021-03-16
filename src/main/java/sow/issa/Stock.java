@@ -5,7 +5,7 @@ import java.util.List;
 
 public final class Stock {
     private static Stock insatance = null;
-    private List<Produit> allProduct = new ArrayList<Produit>();
+    private List<Produit> allProduct = new ArrayList<>();
     static {
         insatance = new Stock();
     }

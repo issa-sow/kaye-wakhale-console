@@ -1,36 +1,32 @@
 package sow.issa;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Commande {
-    private long idCommande;
-    private String dateCommande;
+    private static long idCommande;
     private Client client;
+    private List<Produit> produits;
 
     public Commande() {
-        this.idCommande = 0;
-        this.dateCommande = null;
+        Commande.idCommande++;
         this.client = new Client();
+        this.produits = new ArrayList<Produit>();
     }
 
-    public Commande(long idCommande, String dateCommande, Client client) {
-        this.idCommande = idCommande;
-        this.dateCommande = dateCommande;
+    public Commande(Client client, List<Produit> produits) {
+        Commande.idCommande++;
         this.client = client;
+        this.produits = produits;
     }
 
     public long getIdCommande() {
-        return idCommande;
+        return Commande.idCommande;
     }
 
-    public void setIdCommande(long idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    public String getDateCommande() {
-        return dateCommande;
-    }
-
-    public void setDateCommande(String dateCommande) {
-        this.dateCommande = dateCommande;
+    public static void setIdCommande() {
+        Commande.idCommande++;
     }
 
     public Client getClient() {
@@ -41,12 +37,21 @@ public class Commande {
         this.client = client;
     }
 
-    @Override
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
+
     public String toString() {
-        return "Commande{" +
-                "idCommande=" + idCommande +
-                ", dateCommande='" + dateCommande + '\'' +
-                client.toString() +
-                '}';
+        String allProduct = "";
+        for (Produit p : produits) {
+            allProduct += p.toString() + "\n";
+        }
+        return "Commande {\n" +
+                client.toString() + "\n" +
+                allProduct + "}";
     }
 }
